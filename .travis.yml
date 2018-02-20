@@ -14,3 +14,17 @@ matrix:
 
       script:
         - (cd rover && platformio run)
+
+    - language: crystal
+
+      cache:
+        directories:
+          - "~/.cache/shards"
+
+      install:
+        - (cd groundstation && shards)
+
+      script:
+        - (cd groundstation && crystal spec)
+        - (cd groundstation && shards build)
+        - (cd groundstation && crystal tool format --check src spec)

@@ -1,0 +1,6 @@
+version: 1.0
+shards:
+  sdl:
+    github: RX14/sdl.cr
+    commit: 8122929562d983271867d3ab7ad2e19b23fda6e5
+
