@@ -17,9 +17,10 @@ matrix:
 
     - language: crystal
 
-      cache:
-        directories:
-          - "~/.cache/shards"
+      addons:
+        apt:
+          packages:
+            - libsdl2-dev
 
       install:
         - (cd groundstation && shards)
