@@ -10,8 +10,8 @@ targets:
 
 dependencies:
   sdl:
-    github: RX14/sdl.cr
-    branch: patch-1
+    github: ysbaddaden/sdl.cr
+    branch: master
 
 crystal: 0.24.1
 
