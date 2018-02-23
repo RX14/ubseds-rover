@@ -16,6 +16,7 @@ abstract class Groundstation::Input
 
     scoop_rotate_forwards : Bool,
     scoop_rotate_backwards : Bool,
+    scoop_throttle : Float64,
 
     camera_deploy : Bool,
     camera_retract : Bool
@@ -49,6 +50,9 @@ abstract class Groundstation::Input
       left = get_axis(config.left_axis)
       left *= -1 if config.left_axis_reverse
 
+      scoop_throttle = (get_axis(config.scoop_throttle_axis) + 1) / 2
+      scoop_throttle = 1 - scoop_throttle if config.scoop_throttle_axis_reverse
+
       InputState.new(
         forward: forward,
         left: left,
@@ -58,6 +62,7 @@ abstract class Groundstation::Input
 
         scoop_rotate_forwards: button_pressed?(config.scoop_rotate_forwards_button),
         scoop_rotate_backwards: button_pressed?(config.scoop_rotate_backwards_button),
+        scoop_throttle: scoop_throttle,
 
         camera_deploy: button_pressed?(config.camera_deploy_button),
         camera_retract: button_pressed?(config.camera_retract_button),

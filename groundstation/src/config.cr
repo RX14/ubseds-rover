@@ -15,6 +15,8 @@ class Groundstation::Config
 
     getter scoop_rotate_forwards_button = 4
     getter scoop_rotate_backwards_button = 2
+    getter scoop_throttle_axis = 3
+    getter scoop_throttle_axis_reverse = true
 
     getter camera_deploy_button = 5
     getter camera_retract_button = 3
