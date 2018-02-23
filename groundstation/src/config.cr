@@ -11,12 +11,12 @@ class Groundstation::Config
     getter left_axis_reverse = true
 
     getter scoop_deploy_button = 0
-    getter scoop_retract_button = 0
+    getter scoop_retract_button = 1
 
-    getter scoop_rotate_forwards_button = 0
-    getter scoop_rotate_backwards_button = 0
+    getter scoop_rotate_forwards_button = 4
+    getter scoop_rotate_backwards_button = 2
 
-    getter camera_deploy_button = 0
-    getter camera_retract_button = 0
+    getter camera_deploy_button = 5
+    getter camera_retract_button = 3
   end
 end
