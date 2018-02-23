@@ -5,7 +5,7 @@ SDL.init(SDL::Init::JOYSTICK)
 at_exit { SDL.quit }
 
 abstract class Groundstation::Input
-  record InputState,
+  record State,
     # Speed forwards, between 1.0 and -1.0 (negative is backwards)
     forward : Float64,
     # Steering left, between 1.0 and -1.0 (negative is right)
@@ -21,7 +21,7 @@ abstract class Groundstation::Input
     camera_deploy : Bool,
     camera_retract : Bool
 
-  abstract def current_state : InputState
+  abstract def current_state : Input::State
 
   class Joystick < Input
     def initialize(@config : Groundstation::Config)
@@ -41,7 +41,7 @@ abstract class Groundstation::Input
       @config.joystick
     end
 
-    def current_state : InputState
+    def current_state : Input::State
       LibSDL.joystick_update
 
       forward = get_axis(config.forward_axis)
@@ -53,7 +53,7 @@ abstract class Groundstation::Input
       scoop_throttle = (get_axis(config.scoop_throttle_axis) + 1) / 2
       scoop_throttle = 1 - scoop_throttle if config.scoop_throttle_axis_reverse
 
-      InputState.new(
+      Input::State.new(
         forward: forward,
         left: left,
 
